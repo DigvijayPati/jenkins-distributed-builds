@@ -1,0 +1,19 @@
+version: '3.7'
+services:
+  jenkins-master
+    container_name: jenkins-master
+    image: digupats/jenkins-master:2.176.1
+    logging:
+      driver: "json-file"
+      options:
+        max-file: "5"
+        max-size: "500m"
+    ports:
+      - "80:8080"
+      - "50000:50000"
+    restart: always
+    volumes:
+      - jenkins-data:/var/jenkins_home
+
+volumes:
+  jenkins-data:
